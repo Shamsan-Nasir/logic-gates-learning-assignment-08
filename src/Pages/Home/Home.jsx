@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { HomeCardContainer } from '../../Component/HomeCardContainer'
-import { useLoaderData } from 'react-router'
+import { useLoaderData, useLocation } from 'react-router'
 
 export const Home = () => {
     let allData = useLoaderData();
- 
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [pathname]);
+
     return (
         <>
             <title>KeenKeeper-Home</title>

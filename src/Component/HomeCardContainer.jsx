@@ -25,7 +25,7 @@ export const HomeCardContainer = ({friends}) => {
             </div>
             
             <div>
-                <h1 className='font-semibold text-xl'>Your Friends</h1>
+                <h1 className='font-semibold text-xl text-center md:text-start'>Your Friends</h1>
                 <br />
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
                     {
