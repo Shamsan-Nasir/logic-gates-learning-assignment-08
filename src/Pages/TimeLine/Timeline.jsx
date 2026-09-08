@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { HistoryCard } from './History'
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { TimeLineContext } from '../../App';
 
 export const Timeline = () => {
   let [filterBy, setFilterBy] = useState('');
+    let {timelineCart, setTimelineCart} = useContext(TimeLineContext)
+    console.log(timelineCart)
   return (
     <>
       <title>KeenKeeper-Timeline</title>
@@ -30,7 +33,7 @@ export const Timeline = () => {
 
           <div>
             {
-              <HistoryCard></HistoryCard>
+             timelineCart.map((entry,index) => <HistoryCard key={index} name={entry.name} time={entry.time} action={entry.action}></HistoryCard>) 
             }
           </div>
         </div>

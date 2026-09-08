@@ -1,4 +1,4 @@
-import React, { use, useEffect } from 'react'
+import React, { use, useContext, useEffect } from 'react'
 import { useLoaderData, useLocation, useParams } from 'react-router'
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FiArchive } from "react-icons/fi";
@@ -6,25 +6,42 @@ import { RiNotificationSnoozeLine } from "react-icons/ri";
 import { IoCallOutline } from "react-icons/io5";
 import { MdOutlineMessage } from "react-icons/md";
 import { CiVideoOn } from "react-icons/ci";
+import { TimeLineContext } from '../../App';
+ 
+ 
 
-import callIcon from '../../assets/call.png'
-import textIcon from '../../assets/text.png'
-import videoIcon from '../../assets/video.png'
+
 export const FriendDetails = () => {
   let idx = Number((useParams()).id);
   let allData;
-  // console.log(idx.id) 
 
   const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({top:0, behavior:'smooth'});
-  }, [pathname]);
+  const statusColor = { "on-track": 'bg-main', 'overdue': 'bg-[#EF4444]', 'almost due': 'bg-[#EFAD44]' }
 
   allData = useLoaderData()
   let requiredData = allData.find(friend => friend.id === idx)
 
-  const statusColor = { "on-track": 'bg-main', 'overdue': 'bg-[#EF4444]', 'almost due': 'bg-[#EFAD44]' }
+  let date = new Date(requiredData.next_due_date)
+let formattedDate = date.toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+});
+
+let today = new Date()
+
+let dateTime = today.toLocaleDateString('en-us', {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+})
+ 
+  let {timelineCart, setTimelineCart} = useContext(TimeLineContext)
+
+
+   useEffect(() => {
+    window.scrollTo({top:0, behavior:'smooth'});
+  }, [pathname]);
 
 
 
@@ -65,7 +82,7 @@ export const FriendDetails = () => {
             <div className='text-secondaryText text-center text-sm'>Goal (Days)</div>
           </div>
           <div className='flex flex-col justify-center items-center border border-[#E9E9E9] rounded-lg px-4 py-8  bg-white'>
-            <div className='text-main font-semibold text-2xl text-center'>{requiredData.next_due_date}</div>
+            <div className='text-main font-semibold text-2xl text-center'>{formattedDate}</div>
             <div className='text-secondaryText text-center text-sm '>Next Due</div>
           </div>
         </div>
@@ -83,10 +100,10 @@ export const FriendDetails = () => {
           <h1 className='text-main font-medium text-lg'>Quick Check-In</h1>
 
           <div className='grid grid-cols-3 gap-5 border border-[#E9E9E9]'>
-            <div className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-2   '>
+            <button onClick={()=>{setTimelineCart([...timelineCart,{'name': requiredData.name , "time": dateTime,'action' : 'call'}])}} className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-2   '>
               <div className=' font-semibold text-2xl text-center'><IoCallOutline></IoCallOutline></div>
               <div className=' text-center text-sm'>Call</div>
-            </div>
+            </button>
             <div className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-2 '>
               <div className=' font-semibold text-2xl text-center'><MdOutlineMessage></MdOutlineMessage></div>
               <div className=' text-center text-sm'>Text</div>
