@@ -5,8 +5,15 @@ import { TimeLineContext } from '../../App';
 
 export const Timeline = () => {
   let [filterBy, setFilterBy] = useState('');
-    let {timelineCart, setTimelineCart} = useContext(TimeLineContext)
-    console.log(timelineCart)
+  let {timelineCart, setTimelineCart} = useContext(TimeLineContext)
+  let filteredData;
+  if (filterBy){
+    filteredData = timelineCart.filter(entries => entries.action === filterBy)
+    console.log(filteredData)
+  } else {
+    filteredData = timelineCart;
+  }
+ 
   return (
     <>
       <title>KeenKeeper-Timeline</title>
@@ -16,16 +23,16 @@ export const Timeline = () => {
 
           <h1 className='font-bold text-4xl text-center md:text-start'>Timeline</h1>
 
-          <div>
+          <div className={timelineCart[0]? 'block': 'hidden'}>
             <div className="dropdown dropdown-hover">
               <div tabIndex={0} role="button" className="btn m-1 flex justify-between text-secondaryText">
                 <div className='pr-6'>{filterBy ? 'Filtering by' : 'Filter by'}: {filterBy}</div>
                 <div><RiArrowDropDownLine></RiArrowDropDownLine></div>
               </div>
               <ul tabIndex={-1} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                <li><a onClick={() => setFilterBy('calls')}>Calls</a></li>
-                <li><a onClick={() => setFilterBy('texts')}>Texts</a></li>
-                <li><a onClick={() => setFilterBy('videos')}>Videos</a></li>
+                <li><a onClick={() => setFilterBy('call')}>Calls</a></li>
+                <li><a onClick={() => setFilterBy('text')}>Texts</a></li>
+                <li><a onClick={() => setFilterBy('video')}>Videos</a></li>
                 {filterBy ? <li><a onClick={() => setFilterBy('')}>None</a></li>:<></>}
               </ul>
             </div>
@@ -33,7 +40,9 @@ export const Timeline = () => {
 
           <div>
             {
-             timelineCart.map((entry,index) => <HistoryCard key={index} name={entry.name} time={entry.time} action={entry.action}></HistoryCard>) 
+            timelineCart[0]?
+             filteredData.map((entry,index) => <HistoryCard key={index} name={entry.name} time={entry.time} action={entry.action}></HistoryCard>) 
+             : <div>Your history is empty</div>
             }
           </div>
         </div>

@@ -104,14 +104,14 @@ let dateTime = today.toLocaleDateString('en-us', {
               <div className=' font-semibold text-2xl text-center'><IoCallOutline></IoCallOutline></div>
               <div className=' text-center text-sm'>Call</div>
             </button>
-            <div className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-2 '>
+            <button  onClick={()=>{setTimelineCart([...timelineCart,{'name': requiredData.name , "time": dateTime,'action' : 'text'}])}} className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-2 '>
               <div className=' font-semibold text-2xl text-center'><MdOutlineMessage></MdOutlineMessage></div>
               <div className=' text-center text-sm'>Text</div>
-            </div>
-            <div className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-4 py-4  '>
+            </button>
+            <button  onClick={()=>{setTimelineCart([...timelineCart,{'name': requiredData.name , "time": dateTime,'action' : 'video'}])}} className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-4 py-4  '>
               <div className=' font-semibold text-2xl text-center'><CiVideoOn></CiVideoOn></div>
               <div className=' text-center text-sm '>Video</div>
-            </div>
+            </button>
 
           </div>
 
