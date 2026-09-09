@@ -6,9 +6,11 @@ import { RiNotificationSnoozeLine } from "react-icons/ri";
 import { IoCallOutline } from "react-icons/io5";
 import { MdOutlineMessage } from "react-icons/md";
 import { CiVideoOn } from "react-icons/ci";
-import { TimeLineContext } from '../../App';
- 
- 
+import { TimeLineContext } from '../../Context';
+import { toast } from 'react-toastify';
+
+
+
 
 
 export const FriendDetails = () => {
@@ -22,25 +24,25 @@ export const FriendDetails = () => {
   let requiredData = allData.find(friend => friend.id === idx)
 
   let date = new Date(requiredData.next_due_date)
-let formattedDate = date.toLocaleDateString("en-US", {
+  let formattedDate = date.toLocaleDateString("en-US", {
     day: "numeric",
     month: "long",
     year: "numeric"
-});
+  });
 
-let today = new Date()
+  let today = new Date()
 
-let dateTime = today.toLocaleDateString('en-us', {
+  let dateTime = today.toLocaleDateString('en-us', {
     day: "numeric",
     month: "long",
     year: "numeric"
-})
- 
-  let {timelineCart, setTimelineCart} = useContext(TimeLineContext)
+  })
+
+  let { timelineCart, setTimelineCart } = useContext(TimeLineContext)
 
 
-   useEffect(() => {
-    window.scrollTo({top:0, behavior:'smooth'});
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname]);
 
 
@@ -100,15 +102,26 @@ let dateTime = today.toLocaleDateString('en-us', {
           <h1 className='text-main font-medium text-lg'>Quick Check-In</h1>
 
           <div className='grid grid-cols-3 gap-5 border border-[#E9E9E9]'>
-            <button onClick={()=>{setTimelineCart([...timelineCart,{'name': requiredData.name , "time": dateTime,'action' : 'call'}])}} className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-2   '>
+            <button onClick={() => {
+              setTimelineCart([...timelineCart, { 'name': requiredData.name, "time": dateTime, 'action': 'call' }])
+              toast.success(`Calling ${requiredData.name}`)
+            }} className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-2   '>
               <div className=' font-semibold text-2xl text-center'><IoCallOutline></IoCallOutline></div>
               <div className=' text-center text-sm'>Call</div>
             </button>
-            <button  onClick={()=>{setTimelineCart([...timelineCart,{'name': requiredData.name , "time": dateTime,'action' : 'text'}])}} className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-2 '>
+            
+            <button onClick={() => {
+              setTimelineCart([...timelineCart, { 'name': requiredData.name, "time": dateTime, 'action': 'text' }])
+              toast.success(`Messaging ${requiredData.name}`)
+            }} className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-2 '>
               <div className=' font-semibold text-2xl text-center'><MdOutlineMessage></MdOutlineMessage></div>
               <div className=' text-center text-sm'>Text</div>
             </button>
-            <button  onClick={()=>{setTimelineCart([...timelineCart,{'name': requiredData.name , "time": dateTime,'action' : 'video'}])}} className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-4 py-4  '>
+
+            <button onClick={() => {
+              setTimelineCart([...timelineCart, { 'name': requiredData.name, "time": dateTime, 'action': 'video' }])
+              toast.success(`Video Calling ${requiredData.name}`)
+            }} className='bg-[#F8FAFC] text-secondaryText border border-[#E9E9E9] flex flex-col justify-center cursor-pointer hover:bg-main hover:text-white items-center rounded-lg px-4 py-4  '>
               <div className=' font-semibold text-2xl text-center'><CiVideoOn></CiVideoOn></div>
               <div className=' text-center text-sm '>Video</div>
             </button>

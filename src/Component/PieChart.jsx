@@ -26,9 +26,9 @@ export default function PieChartWithPaddingAngle({ isAnimationActive = true, dat
                 innerRadius="70%"
                 outerRadius="90%"
                 // Corner radius is the rounded edge of each pie slice
-                cornerRadius="10%"
+                cornerRadius="0"
                 // padding angle is the gap between each pie slice
-                paddingAngle={1}
+                paddingAngle={0}
                 dataKey="value"
                 isAnimationActive={isAnimationActive}
                 shape={(props) => (

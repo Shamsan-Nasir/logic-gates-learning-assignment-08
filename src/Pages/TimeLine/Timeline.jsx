@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { HistoryCard } from './History'
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { TimeLineContext } from '../../App';
+import { TimeLineContext } from '../../Context';
+ 
 
 export const Timeline = () => {
   let [filterBy, setFilterBy] = useState('');
