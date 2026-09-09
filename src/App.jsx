@@ -5,6 +5,7 @@ import './index.css'
 import { Navbar } from './Component/Navbar'
 import { Footer } from './Component/Footer'
 import { Outlet } from 'react-router'
+
 export const TimeLineContext = createContext();
 
 function App() {

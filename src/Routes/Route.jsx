@@ -16,24 +16,24 @@ const router = createBrowserRouter([
     children:[
         {
             index:true,
-            path:"/",
+            path:"Home",
             Component: Home,
             loader: () => fetch('/data.json').then(res => res.json())
         },
         {
-            path:"/:id",
+            path:"Home/:id",
             Component: FriendDetails,
             loader: () => fetch('/data.json').then(res => res.json())
 
         },
         {
         
-            path:"/timeline",
+            path:"timeline",
             Component: Timeline
         },
         {
         
-            path:"/stats",
+            path:"stats",
             Component: Stat
         }
     ]

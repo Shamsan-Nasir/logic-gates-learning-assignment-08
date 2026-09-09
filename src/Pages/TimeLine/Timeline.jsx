@@ -9,7 +9,6 @@ export const Timeline = () => {
   let filteredData;
   if (filterBy){
     filteredData = timelineCart.filter(entries => entries.action === filterBy)
-    console.log(filteredData)
   } else {
     filteredData = timelineCart;
   }
@@ -23,10 +22,10 @@ export const Timeline = () => {
 
           <h1 className='font-bold text-4xl text-center md:text-start'>Timeline</h1>
 
-          <div className={timelineCart[0]? 'block': 'hidden'}>
+          <div className={timelineCart.length > 0 ? 'block': 'hidden'}>
             <div className="dropdown dropdown-hover">
               <div tabIndex={0} role="button" className="btn m-1 flex justify-between text-secondaryText">
-                <div className='pr-6'>{filterBy ? 'Filtering by' : 'Filter by'}: {filterBy}</div>
+                <div className='pr-8'>{filterBy ? 'Filtering by' : 'Filter by'}: {filterBy}</div>
                 <div><RiArrowDropDownLine></RiArrowDropDownLine></div>
               </div>
               <ul tabIndex={-1} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
@@ -40,9 +39,9 @@ export const Timeline = () => {
 
           <div>
             {
-            timelineCart[0]?
+            timelineCart.length > 0 ?
              filteredData.map((entry,index) => <HistoryCard key={index} name={entry.name} time={entry.time} action={entry.action}></HistoryCard>) 
-             : <div>Your history is empty</div>
+             : <div className='flex justify-center items-center w-full p-5 bg-gray-300 rounded-2xl'><div>Your history is empty</div></div>
             }
           </div>
         </div>
