@@ -11,9 +11,6 @@ import { toast } from 'react-toastify';
 import { FaArrowLeft } from "react-icons/fa";
 
 
-
-
-
 export const FriendDetails = () => {
   let idx = Number((useParams()).id);
   let allData;
@@ -65,27 +62,27 @@ export const FriendDetails = () => {
             <div className='text-center text-xs'>Preferred: email</div>
           </div>
 
-          <div className='flex  flex-row sm:flex-col gap-3'>
-            <div className='border flex-1 md:flex-0 border-[#E9E9E9]  hover:bg-main hover:text-white text-sm flex justify-center items-center gap-1.5 p-2.5 text-center bg-white rounded-lg' > <RiNotificationSnoozeLine></RiNotificationSnoozeLine> Snooze 2 weeks</div>
-            <div className='border flex-1 md:flex-0 border-[#E9E9E9]  hover:bg-main hover:text-white text-sm flex justify-center items-center gap-1.5 py-2.5 text-center bg-white rounded-lg' > <FiArchive></FiArchive>Archive</div>
-            <div className='border flex-1 md:flex-0 border-[#E9E9E9]  hover:bg-red-600 hover:text-white text-sm flex justify-center items-center gap-1.5 py-2.5 text-center text-red-600 bg-white rounded-lg'> <RiDeleteBin6Line></RiDeleteBin6Line> Delete</div>
+          <div className='flex  flex-row sm:flex-col gap-1 md:gap-3'>
+            <div className='border flex-1 md:flex-0 border-[#E9E9E9]  hover:bg-main hover:text-white    text-xs sm:text-sm flex justify-center items-center gap-1.5 p-2.5 text-center bg-white rounded-lg' > <RiNotificationSnoozeLine></RiNotificationSnoozeLine> Snooze 2 weeks</div>
+            <div className='border flex-1 md:flex-0 border-[#E9E9E9]  hover:bg-main hover:text-white    text-xs sm:text-sm flex justify-center items-center gap-1.5 py-2.5 text-center bg-white rounded-lg' > <FiArchive></FiArchive>Archive</div>
+            <div className='border flex-1 md:flex-0 border-[#E9E9E9]  hover:bg-red-600 hover:text-white text-xs sm:text-sm flex justify-center items-center gap-1.5 py-2.5 text-center text-red-600 bg-white rounded-lg'> <RiDeleteBin6Line></RiDeleteBin6Line> Delete</div>
           </div>
         </div>
 
         <div className='flex flex-col gap-5 '>
 
-          <div className='grid grid-cols-3 gap-5 '>
+          <div className='grid grid-cols-3 gap-1 md:gap3 lg:gap-5 '>
             <div className='flex flex-col justify-center items-center border border-[#E9E9E9] rounded-lg px-2   bg-white'>
-              <div className='text-main font-semibold text-2xl text-center'>{requiredData.days_since_contact}</div>
-              <div className='text-secondaryText text-center text-sm'>Days Since Contact</div>
+              <div className='text-main font-semibold text-lg md:text-xl lg:text-2xl text-center'>{requiredData.days_since_contact}</div>
+              <div className='text-secondaryText text-center sm:text-xs text-sm'>Days Since Contact</div>
             </div>
             <div className='flex flex-col justify-center items-center border border-[#E9E9E9] rounded-lg px-2 bg-white'>
-              <div className='text-main font-semibold text-2xl text-center'>{requiredData.goal}</div>
-              <div className='text-secondaryText text-center text-sm'>Goal (Days)</div>
+              <div className='text-main font-semibold text-lg md:text-xl lg:text-2xl text-center'>{requiredData.goal}</div>
+              <div className='text-secondaryText text-center sm:text-xs text-sm'>Goal (Days)</div>
             </div>
             <div className='flex flex-col justify-center items-center border border-[#E9E9E9] rounded-lg px-4 py-8  bg-white'>
-              <div className='text-main font-semibold text-2xl text-center'>{formattedDate}</div>
-              <div className='text-secondaryText text-center text-sm '>Next Due</div>
+              <div className='text-main font-semibold text-lg md:text-xl lg:text-2xl text-center'>{formattedDate}</div>
+              <div className='text-secondaryText text-center sm:text-xs text-sm '>Next Due</div>
             </div>
           </div>
 

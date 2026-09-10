@@ -52,18 +52,14 @@ export const Timeline = () => {
           if (result.isConfirmed) {
             localStorage.removeItem('timeline')
             setTimelineCart([])
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
           }
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success"
-          });
         })
-    } else {
-
     }
-
-
   }
 
   return (
@@ -83,7 +79,7 @@ export const Timeline = () => {
               <input onChange={(event) => setSearchBy(event.target.value)} type="text" name="search" id="searchBox" className={` border p-1.5 w-full ${timelineCart.length > 0 ? 'block' : 'hidden'}`} placeholder='Search Friend Name' />
             </div>
 
-            <div className='grid grid-cols-3 items-center justify-between w-full'>
+            <div className='flex md:grid md:grid-cols-3 items-center justify-between w-full'>
 
               <div className={timelineCart.length > 0 ? 'block' : 'hidden'}>
                 <div className="dropdown dropdown-hover">
