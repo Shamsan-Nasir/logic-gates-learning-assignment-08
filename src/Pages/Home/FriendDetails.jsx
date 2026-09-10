@@ -32,11 +32,12 @@ export const FriendDetails = () => {
 
   let today = new Date()
 
-  let dateTime = today.toLocaleDateString('en-us', {
-    day: "numeric",
-    month: "long",
-    year: "numeric"
-  })
+  let dateTime = today
+  //  .toLocaleDateString('en-us', {
+  //   day: "numeric",
+  //   month: "long",
+  //   year: "numeric"
+  // })
 
   let { timelineCart, setTimelineCart } = useContext(TimeLineContext)
 
@@ -109,7 +110,7 @@ export const FriendDetails = () => {
               <div className=' font-semibold text-2xl text-center'><IoCallOutline></IoCallOutline></div>
               <div className=' text-center text-sm'>Call</div>
             </button>
-            
+
             <button onClick={() => {
               setTimelineCart([...timelineCart, { 'name': requiredData.name, "time": dateTime, 'action': 'text' }])
               toast.success(`Messaging ${requiredData.name}`)
