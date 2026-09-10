@@ -13,7 +13,7 @@ export const Home = () => {
     return (
         <>
             <title>KeenKeeper-Home</title>
-            <section className='py-16 px-10 sm:px-20 md:px-30 lg:px-45 bg-[#F8FAFC]'>
+            <section className='py-16 px-10 sm:px-20 md:px-30 lg:px-40 bg-[#F8FAFC]'>
                 <div className='flex flex-col items-center justify-center mb-8'>
                     <h1 className='text-[#1F2937] text-center font-bold text-[38px]'>Friends to keep close in your life</h1>
                     <p className='text-[#64748B] py-3 text-center w-[55%] text-sm '>Your personal shelf of meaningful connections. Browse, tend, and nurture the relationships that matter most.</p>

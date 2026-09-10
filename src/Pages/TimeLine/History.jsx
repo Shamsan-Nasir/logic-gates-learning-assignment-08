@@ -6,6 +6,7 @@ import videoIcon from '../../assets/video.png'
 
 const iconList = { "call": callIcon, 'text': textIcon, 'video': videoIcon }
 export const HistoryCard = ({ name, time, action }) => {
+  time = new Date(time);
   let dateFormat = time.toLocaleDateString('en-us', {
     day: "numeric",
     month: "long",

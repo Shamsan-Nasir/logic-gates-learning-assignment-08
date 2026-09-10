@@ -11,7 +11,7 @@ import { Link, NavLink } from 'react-router';
 export const Navbar = () => {
 
     return (
-        <div className="navbar bg-base-100 shadow-sm px-16">
+        <div className="navbar bg-base-100 shadow-sm px-5 sm:px-10 md:px-16">
             <div className="navbar-start">
 
                 <div className="text-xl font-bold"><img src={logoImg} alt="" /></div>
